@@ -4,6 +4,12 @@
 
 This is a Todo List Rendering Web App to apply for Front-end intern position at GEEK Up Vietnam Technology JSC. This kinda assessment is using JSON Placeholder API.
 
+## Demo:
+
+<p align="center">
+    <img src="public/Todo-Demo.png" width="800"/>
+</p>
+
 ## Usages:
 
 ◇ ReactJS
