@@ -28,12 +28,7 @@ export default function App() {
           <Route
             path="/todo"
             element={
-              <React.Suspense
-                fallback={
-                  <Loader />
-                  // <>Loading...</>
-                }
-              >
+              <React.Suspense fallback={<Loader />}>
                 <Todo />
               </React.Suspense>
             }
@@ -43,12 +38,7 @@ export default function App() {
           <Route
             path="/"
             element={
-              <React.Suspense
-                fallback={
-                  <Loader />
-                  // <>Loading...</>
-                }
-              >
+              <React.Suspense fallback={<Loader />}>
                 <Home />
               </React.Suspense>
             }
@@ -58,12 +48,7 @@ export default function App() {
           <Route
             path="*"
             element={
-              <React.Suspense
-                fallback={
-                  <Loader />
-                  // <>Loading...</>
-                }
-              >
+              <React.Suspense fallback={<Loader />}>
                 <NotFound />
               </React.Suspense>
             }

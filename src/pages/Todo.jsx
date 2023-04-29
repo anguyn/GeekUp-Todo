@@ -26,10 +26,15 @@ const Todo = () => {
 
   useEffect(() => {
     const getUserList = async () => {
-      const res = await getUsers();
-      setUserList(res.data);
+      try {
+        const res = await getUsers();
+        setUserList(res.data);
+      } catch (error) {
+        showToast("error", "There was an error getting the user list");
+        console.error(error.message);
+      }
     };
-    return () => getUserList();
+    getUserList();
   }, []);
 
   useEffect(() => {
@@ -47,14 +52,20 @@ const Todo = () => {
   }, [currentUserId]);
 
   const handleGetTodos = async (userId) => {
-    const res = await getUserTodos(userId);
-    const currentData = arrangeTodos(res.data).map((todo) => ({
-      ...todo,
-      loading: false,
-    }));
-    setUserTodos((prev) => [...prev, ...currentData]);
-    setCurrentUserTodos(currentData);
-    setLoading(false);
+    try {
+      const res = await getUserTodos(userId);
+      const currentData = arrangeTodos(res.data).map((todo) => ({
+        ...todo,
+        loading: false,
+      }));
+      setUserTodos((prev) => [...prev, ...currentData]);
+      setCurrentUserTodos(currentData);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      showToast("error", "There was an error getting the user tasks");
+      console.error(error.message);
+    }
   };
 
   const handleUserChange = (e) => {
@@ -122,6 +133,16 @@ const Todo = () => {
     document.querySelector("html").classList.remove("stop-scrolling");
     if (confirm) {
       try {
+        setCurrentUserTodos((prev) =>
+          prev.map((todo) => {
+            if (todo.id === currentTodoId)
+              return {
+                ...todo,
+                loading: true,
+              };
+            else return todo;
+          })
+        );
         const response = await deleteTodo(currentTodoId);
         setCurrentUserTodos((prev) =>
           prev.filter((todo) => todo.id !== currentTodoId)

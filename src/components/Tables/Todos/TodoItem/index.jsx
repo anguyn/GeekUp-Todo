@@ -72,10 +72,15 @@ const TodoItem = (props) => {
             )}
           </button>
         )}
-        <DeleteBtn
-          onClick={() => handleClickDelete(todo.id)}
-          className="fill-red-500 w-8 h-10 self-center hover:fill-red-400 transition-all duration-150 ease cursor-pointer"
-        />
+
+        {todo.loading ? (
+          <DeleteBtn className="fill-red-300 w-8 h-10 self-center transition-all duration-150 ease cursor-not-allowed" />
+        ) : (
+          <DeleteBtn
+            onClick={() => handleClickDelete(todo.id)}
+            className="fill-red-500 w-8 h-10 self-center hover:fill-red-400 transition-all duration-150 ease cursor-pointer"
+          />
+        )}
       </td>
     </tr>
   ) : (
