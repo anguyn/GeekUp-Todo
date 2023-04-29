@@ -53,7 +53,11 @@ const Navigation = () => {
         </div>
       )}
 
-      <div className="w-full navbar sticky top-0 left-0 z-[51] shadow">
+      <div
+        className={`w-full navbar sticky top-0 left-0 z-[51] shadow ${
+          mode === "dark" ? "bg-base-100" : "bg-white"
+        }`}
+      >
         <div className="flex-none lg:hidden">
           <label
             htmlFor="my-drawer-3"
@@ -81,6 +85,33 @@ const Navigation = () => {
           </ul>
         </div>
         <div className="flex-1 justify-end">
+          <div className="dropdown dropdown-hover dropdown-end mr-2.5 cursor-pointer my-auto">
+            <label tabIndex={0} className="my-auto">
+              <img
+                src="https://drive.google.com/uc?id=1t71MF3NSOENdrOxeV4S5OJbxb_i_Nh9r"
+                alt="An Nguyen"
+                className="rounded-full w-10 h-10 object-cover border p-0.5"
+              />
+            </label>
+            <div className="pt-2">
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 border border-blue-400"
+              >
+                <li>
+                  <a
+                    href="https://annguyen-portfolio.vercel.app/"
+                    target="_blank"
+                  >
+                    Porfolio
+                  </a>
+                </li>
+                <li>
+                  <a>Thank you (╹ڡ╹ ) </a>
+                </li>
+              </ul>
+            </div>
+          </div>
           🌞
           <input
             type="checkbox"
