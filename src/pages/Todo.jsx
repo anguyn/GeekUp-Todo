@@ -216,6 +216,12 @@ const Todo = () => {
               )}
             </tbody>
           </table>
+          <h3>
+            Done{" "}
+            {currentUserTodos.filter((todo) => todo.completed === true)
+              .length || 0}
+            /{currentUserTodos.length || 0} tasks
+          </h3>
         </div>
       </div>
       {showModal && (
